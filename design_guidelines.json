@@ -1,0 +1,178 @@
+{
+  "project_title": "Illuminate Your Diwali – Premium Indian Home Decor & Gifting E-commerce",
+  "app_type": "e-commerce",
+  "archetype": "ORGANIC & EARTHY LUXURY",
+  "design_philosophy": {
+    "core_principles": [
+      "Tactile Warmth & Refined Heritage: Warm saffron, champagne gold, ivory canvas, and rich charcoal text with subtle terracotta touches.",
+      "Editorial Direct-to-Consumer Aesthetic: Avoid marketplace clutter, aggressive countdown timers, or cheap sale badges. Maintain generous spacing, refined product cards, and curated storytelling.",
+      "Shopify-Liquid Compatibility: Clean component boundaries (Sections, Snippets, Data Schemas) with centralized theme tokens for seamless Liquid porting.",
+      "Mobile-First & Tactile UX: Micro-interactions tuned for mobile thumb zones (sticky CTA bar, swipeable galleries, slide-over filter drawer, instant cart drawer)."
+    ]
+  },
+  "colors": {
+    "palette": {
+      "saffron": "#E89124",
+      "deep_saffron": "#B96516",
+      "champagne_gold": "#D6B36A",
+      "terracotta": "#C85A32",
+      "ivory_bg": "#FFF9F0",
+      "warm_white": "#FFFFFF",
+      "primary_text": "#29251F",
+      "secondary_text": "#746C62",
+      "border": "#EAE2D7",
+      "border_dark": "#D4C8B8",
+      "success": "#26734D",
+      "error": "#B42318",
+      "card_bg": "#FFFFFF"
+    },
+    "css_variables": {
+      "--color-saffron": "#E89124",
+      "--color-saffron-dark": "#B96516",
+      "--color-gold": "#D6B36A",
+      "--color-terracotta": "#C85A32",
+      "--color-bg-ivory": "#FFF9F0",
+      "--color-bg-white": "#FFFFFF",
+      "--color-text-primary": "#29251F",
+      "--color-text-secondary": "#746C62",
+      "--color-border": "#EAE2D7",
+      "--color-success": "#26734D",
+      "--color-error": "#B42318"
+    },
+    "rules": [
+      "Use #FFF9F0 (Ivory) for page background and section contrasts, keeping #FFFFFF for product cards and modal containers.",
+      "Primary CTAs use #E89124 (Saffron) with #FFFFFF text and subtle #B96516 hover depth.",
+      "Never use generic blue (#1B93A4 or #7351B7) or harsh full-black (#000000). Use #29251F for deep charcoal text.",
+      "Ensure all text against ivory and white meets WCAG AA 4.5:1 minimum contrast ratio."
+    ]
+  },
+  "typography": {
+    "font_families": {
+      "heading": "'Playfair Display', 'Cormorant Garamond', Georgia, serif",
+      "body": "'Plus Jakarta Sans', 'Outfit', sans-serif",
+      "accent_mono": "'JetBrains Mono', monospace"
+    },
+    "scale": {
+      "hero_h1": "text-4xl sm:text-5xl lg:text-6xl font-serif font-bold tracking-tight text-[#29251F]",
+      "section_h2": "text-2xl sm:text-3xl lg:text-4xl font-serif font-semibold text-[#29251F]",
+      "subsection_h3": "text-xl sm:text-2xl font-serif font-medium text-[#29251F]",
+      "card_title": "text-base sm:text-lg font-sans font-semibold text-[#29251F]",
+      "body": "text-sm sm:text-base font-sans leading-relaxed text-[#746C62]",
+      "eyebrow_label": "text-xs font-sans uppercase tracking-[0.2em] font-semibold text-[#B96516]"
+    },
+    "rules": [
+      "Headings MUST use Playfair Display / Cormorant Garamond serif fonts.",
+      "Do NOT use Inter for main headings or section titles.",
+      "Maintain tight letter spacing for headings (tracking-tight) and wide tracking for eyebrow tags."
+    ]
+  },
+  "spacing_and_layout": {
+    "grid_system": "Bento Tetra & Responsive 12-Column Grid",
+    "container_max_width": "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8",
+    "mobile_padding": "px-4 py-6",
+    "section_spacing": "py-12 sm:py-20 lg:py-24",
+    "card_padding": "p-5 sm:p-6"
+  },
+  "pages": [
+    {
+      "name": "Home Page",
+      "route": "/",
+      "sections": [
+        "Announcement Bar (Diwali Sale banner with countdown option & free shipping callout)",
+        "Sticky Glassmorphism Navigation Bar (Logo, Nav links, Search trigger, Cart counter, Wishlist, Mobile menu)",
+        "Hero Section (Festival of Lights hero campaign with rich imagery, festive pill badge, headline, Dual CTAs)",
+        "Trust & Value Benefits Bar (Handcrafted in India, Pan-India Express Delivery, Premium Gift Packaging, Easy Returns)",
+        "Category Showcase Cards (Festive Diyas & Brassware, Festive LED & String Lights, Royal Gift Hampers, Artisan Ceramics & Vases, Home Textiles)",
+        "Trending Festive Products Grid (Interactive filter tabs: All, Best Sellers, Under ₹1999, Gift Hampers with Quick View & Add to Cart)",
+        "Editorial Story: 'The Art of Royal Gifting' (High-impact split layout featuring luxury brassware & curated hampers)",
+        "LED Lighting & Ambient Decor Spotlight (Interactive showcase for brass diyas, warm fairy lanterns, ceramic table lamps)",
+        "Festive Inspiration Lookbook Grid (Shop the Look visual hotspots)",
+        "Customer Reviews & Testimonial Slider",
+        "Festive Newsletter Subscription (10% Off First Diwali Order)",
+        "Final Festive CTA Banner"
+      ]
+    },
+    {
+      "name": "Collection / Shop Page",
+      "route": "/collection",
+      "sections": [
+        "Collection Header with Breadcrumb & Category Description",
+        "Active Filters & Sorting Bar (Grid/List toggle, Sort by Price/Popularity/Newest)",
+        "Slide-over Filter Drawer (Price Slider, Occasion, Material, Category, Stock status, Rating)",
+        "Product Grid (Responsive 2 cols on mobile, 3/4 cols on desktop)",
+        "Pagination / Load More Button",
+        "Related Collections Carousel"
+      ]
+    },
+    {
+      "name": "Product Detail Page (PDP)",
+      "route": "/product/:id",
+      "sections": [
+        "Breadcrumbs & Mobile Back Navigation",
+        "Product Gallery (Swipeable carousel for mobile, multi-thumbnail grid for desktop with image zoom)",
+        "Product Information (Title, Artisan Tag, Rating stars, Price with MRP discount, Festive badge)",
+        "Variant Selection Swatches (Color swatches, Set sizes, Gift Box packaging options)",
+        "Stock Status Indicator & Delivery Pincode Checker",
+        "Add to Cart & Buy Now Action Buttons",
+        "Sticky Mobile Add-to-Cart Bar (Appears when main ATC is scrolled past)",
+        "Feature Highlights & Specifications Accordion (Craft & Care, Dimensions, Shipping & Returns)",
+        "Artisan Craftsmanship Callout Box",
+        "Customer Reviews & Ratings Breakdown with Review Submission Modal",
+        "Frequently Bought Together / Recommendation Carousel"
+      ]
+    },
+    {
+      "name": "Cart Drawer & Cart Page",
+      "route": "/cart",
+      "sections": [
+        "Free Express Shipping Progress Bar (Dynamic threshold: 'Add ₹499 more for Free Shipping')",
+        "Cart Items List with Quantity Controls, Variant Badges, and Item Removal",
+        "Personalized Festive Gift Note Accordion Input",
+        "Promo Code / Diwali Coupon Input with Instant Validation",
+        "Order Summary (Subtotal, Estimated GST, Shipping calculation, Total Discount)",
+        "Checkout CTA button with trust logos (UPI, Razorpay, COD, NetBanking)"
+      ]
+    },
+    {
+      "name": "Search Page",
+      "route": "/search",
+      "sections": [
+        "Search Bar with Auto-Focus & Clear Button",
+        "Popular Search Keywords & Recent Searches Tags",
+        "Live Search Results Grid with Filter Sidebar"
+      ]
+    },
+    {
+      "name": "Institutional Pages",
+      "routes": ["/about", "/contact", "/faq", "/policies"],
+      "sections": [
+        "About Us: Heritage & Artisan Story with Studio Images",
+        "Contact Us: Customer Care Form + Direct WhatsApp Quick Help CTA",
+        "FAQ Accordions (Shipping, Gifting, Customization, Returns)",
+        "Store Policies (Privacy, Terms, Shipping & Cancellation)"
+      ]
+    }
+  ],
+  "image_urls": {
+    "hero_diwali_diya": "https://images.pexels.com/photos/6213685/pexels-photo-6213685.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    "diwali_terracotta_diyas": "https://images.pexels.com/photos/39189948/pexels-photo-39189948.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    "brass_table_lamp": "https://images.pexels.com/photos/34200624/pexels-photo-34200624.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    "warm_glow_lamp": "https://images.pexels.com/photos/27781350/pexels-photo-27781350.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    "ceramic_vase_table": "https://images.unsplash.com/photo-1772567732907-fee62f64e22c?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjY2NzV8MHwxfHNlYXJjaHw0fHxsdXh1cnklMjBjZXJhbWljJTIwdmFzZSUyMGhvbWUlMjBkZWNvciUyMGRpbmluZyUyMHRhYmxlJTIwYWVzdGhldGljfGVufDB8fHx8MTc5MjI1NzU1NXww&ixlib=rb-4.1.0&q=85",
+    "dining_room_vases": "https://images.unsplash.com/photo-1759417254573-c4c93fc8c544?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjY2NzV8MHwxfHNlYXJjaHwyfHxsdXh1cnklMjBjZXJhbWljJTIwdmFzZSUyMGhvbWUlMjBkZWNvciUyMGRpbmluZyUyMHRhYmxlJTIwYWVzdGhldGljfGVufDB8fHx8MTc5MjI1NzU1NXww&ixlib=rb-4.1.0&q=85",
+    "brass_lamps_console": "https://images.unsplash.com/photo-1771795639001-a084a0d1045e?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzMzN8MHwxfHNlYXJjaHw0fHxicmFzcyUyMHdhcm0lMjBsYW1wJTIwd2FybSUyMGFtYmllbnQlMjBsaWdodGluZyUyMGludGVyaW9yJTIwbGl2aW5nJTIwcm9vbXxlbnwwfHx8fDE3OTIyNTc1NTV8MA&ixlib=rb-4.1.0&q=85",
+    "leather_couch_decor": "https://images.unsplash.com/photo-1628512743826-2c28a508ad5e?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzMzN8MHwxfHNlYXJjaHwyfHxicmFzcyUyMHdhcm0lMjBsYW1wJTIwd2FybSUyMGFtYmllbnQlMjBsaWdodGluZyUyMGludGVyaW9yJTIwbGl2aW5nJTIwcm9vbXxlbnwwfHx8fDE3OTIyNTc1NTV8MA&ixlib=rb-4.1.0&q=85"
+  },
+  "testing_and_accessibility": {
+    "data_testid_rules": "ALL interactive and key informational elements MUST have explicit data-testid attributes (e.g. data-testid='nav-cart-btn', data-testid='add-to-cart-btn', data-testid='filter-price-slider', data-testid='pincode-check-input').",
+    "mobile_touch_targets": "Minimum touch area 44px x 44px for buttons and form controls on mobile.",
+    "reduced_motion": "Support prefers-reduced-motion CSS query to pause non-essential carousel or scroll animations."
+  },
+  "UNIVERSAL GUIDELINES FOR MAIN AGENT": [
+    "Follow mobile-first responsive design across all 320px–1600px test viewports.",
+    "Do NOT use placeholder images or fake broken links. Use provided Unsplash/Pexels image URLs.",
+    "Do NOT center align page root containers or rely on generic blue accents.",
+    "Ensure every button, link, search input, filter toggle, accordion, and modal contains a unique kebab-case data-testid.",
+    "Use Lucide-react or Phosphor icons exclusively, avoiding AI emoji characters."
+  ]
+}

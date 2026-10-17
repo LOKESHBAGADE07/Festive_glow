@@ -1,0 +1,15 @@
+# Noor & Vaani
+
+Noor & Vaani is a design prototype for a premium Indian home decor and gifting storefront. It launches with festive Diwali products — diyas, lanterns, fairy lights, rangoli kits and gift hampers — and is structured to expand into year-round home decor, textiles and accessories.
+
+## Pages
+- Home: hero campaign "Illuminate Your Diwali — Festive Decor & Gift Sale", category showcase, trending products, gift hamper editorial, lighting spotlight, inspiration, newsletter.
+- Collections: /collections/shop-all plus /collections/lights, /collections/decor, /collections/gifts, /collections/apparel with working filters and sorting.
+- Product detail: /products/elegant-brass-diya-lanterns-set-of-4 (featured demo product with variants, gallery and FAQs).
+- Cart: /cart with quantity, removal, subtotal and a configurable free-shipping threshold (₹999 demo).
+- Wishlist: /wishlist.
+- Search: /search.
+- Info pages: /pages/about, /pages/contact, /pages/faq, /pages/track-order, /pages/shipping-policy, /pages/returns-refunds, /pages/privacy-policy, /pages/terms-of-service.
+
+## Notes
+- All products, prices, ratings and policies are clearly labelled demonstration data for a design prototype; the production build is planned as a Shopify Liquid theme with real catalogue data and Shopify's hosted checkout.

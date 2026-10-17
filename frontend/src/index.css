@@ -1,0 +1,122 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ————— Noor & Vaani design tokens (mirrored for Shopify Liquid port) ————— */
+:root {
+  --nv-saffron: #E89124;
+  --nv-saffron-dark: #B96516;
+  --nv-gold: #D6B36A;
+  --nv-gold-light: #EAD9B4;
+  --nv-terracotta: #C85A32;
+  --nv-ivory: #FFF9F0;
+  --nv-white: #FFFFFF;
+  --nv-ink: #29251F;
+  --nv-ink-soft: #746C62;
+  --nv-line: #EAE2D7;
+  --nv-line-dark: #D4C8B8;
+  --nv-success: #26734D;
+  --nv-error: #B42318;
+
+  --background: 40 100% 97%;
+  --foreground: 36 14% 14%;
+  --card: 0 0% 100%;
+  --card-foreground: 36 14% 14%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 36 14% 14%;
+  --primary: 33 81% 53%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 40 45% 92%;
+  --secondary-foreground: 36 14% 14%;
+  --muted: 40 45% 92%;
+  --muted-foreground: 35 9% 42%;
+  --accent: 40 45% 92%;
+  --accent-foreground: 36 14% 14%;
+  --destructive: 5 93% 40%;
+  --destructive-foreground: 0 0% 98%;
+  --border: 36 31% 88%;
+  --input: 36 31% 88%;
+  --ring: 33 81% 53%;
+  --radius: 0.5rem;
+}
+
+html { scroll-behavior: smooth; overflow-x: clip; }
+html.lenis, html.lenis body { height: auto; }
+body { overflow-x: clip; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+
+body {
+  margin: 0;
+  background: var(--nv-ivory);
+  color: var(--nv-ink);
+  font-family: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection { background: var(--nv-saffron); color: #fff; }
+
+:focus-visible {
+  outline: 2px solid var(--nv-saffron);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+img { user-select: none; }
+
+/* Editorial marquee */
+@keyframes nv-marquee { to { transform: translateX(-50%); } }
+.nv-marquee-track {
+  display: flex;
+  width: max-content;
+  animation: nv-marquee 55s linear infinite;
+}
+.nv-marquee:hover .nv-marquee-track { animation-play-state: paused; }
+
+/* Hero mask reveal */
+.nv-mask { display: block; overflow: hidden; }
+.nv-mask > span { display: block; }
+
+/* Fine serif drop-cap feel for editorial copy */
+.nv-eyebrow {
+  font-size: 0.6875rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+/* Scroll-snap gallery */
+.nv-gallery { scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+.nv-gallery::-webkit-scrollbar { display: none; }
+.nv-gallery > * { scroll-snap-align: center; }
+
+/* Underline sweep for nav links */
+.nv-link { position: relative; }
+.nv-link::after {
+  content: "";
+  position: absolute;
+  left: 0; bottom: -3px;
+  width: 100%; height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.nv-link:hover::after, .nv-link[data-active="true"]::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* Hide number input arrows */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .nv-marquee-track { animation: none; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
