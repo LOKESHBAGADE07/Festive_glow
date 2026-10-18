@@ -34,6 +34,9 @@ dist
 
 *token.json*
 *credentials.json*
+*.env
+*.env.*
+!.env.example
 
 # Logs and debug files
 npm-debug.log*
@@ -83,3 +86,6 @@ android-sdk/
 
 # overlay black-box crash/user-report dumps — session data, never history
 **/.emergent/recordings/
+
+# Local agent session data
+.emergent/cron/

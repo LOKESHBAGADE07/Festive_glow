@@ -11,7 +11,9 @@
   --nv-terracotta: #C85A32;
   --nv-ivory: #FFF9F0;
   --nv-white: #FFFFFF;
-  --nv-ink: #29251F;
+  --nv-ink: #2A1A1A;
+  --nv-maroon: #5A1E24;
+  --nv-maroon-deep: #3B1117;
   --nv-ink-soft: #746C62;
   --nv-line: #EAE2D7;
   --nv-line-dark: #D4C8B8;
@@ -140,10 +142,23 @@ input[type="number"]::-webkit-inner-spin-button { -webkit-appearance: none; marg
 /* Hero radial glow behind the 3D diya */
 .nv-hero-glow {
   background:
-    radial-gradient(60% 55% at 68% 55%, rgba(232,145,36,0.32), transparent 70%),
-    radial-gradient(40% 40% at 30% 20%, rgba(214,179,106,0.10), transparent 70%),
-    #171208;
+    radial-gradient(55% 60% at 70% 50%, rgba(232,145,36,0.28), transparent 70%),
+    radial-gradient(40% 40% at 20% 10%, rgba(214,179,106,0.10), transparent 70%),
+    var(--nv-maroon-deep);
 }
+
+/* Traditional jaali lattice — very subtle, used on dark surfaces */
+.nv-jaali::before {
+  content: "";
+  position: absolute; inset: 0; pointer-events: none; opacity: 0.07;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='56' viewBox='0 0 56 56'%3E%3Cg fill='none' stroke='%23EAD9B4' stroke-width='1'%3E%3Cpath d='M28 2 L54 28 L28 54 L2 28 Z'/%3E%3Ccircle cx='28' cy='28' r='9'/%3E%3Cpath d='M28 19 Q34 28 28 37 Q22 28 28 19 Z'/%3E%3C/g%3E%3C/svg%3E");
+}
+/* Paisley-ish hairline divider */
+.nv-rule { height: 1px; background: linear-gradient(90deg, transparent, var(--nv-gold) 30%, var(--nv-gold) 70%, transparent); }
+
+/* Desktop density — keeps the whole layout readable without browser zoom */
+@media (min-width: 1024px) { html { font-size: 15px; } }
+@media (min-width: 1536px) { html { font-size: 16px; } }
 
 /* Thin, themed horizontal scrollbar for compare tables */
 .nv-scroll { scrollbar-width: thin; scrollbar-color: var(--nv-line-dark) transparent; }

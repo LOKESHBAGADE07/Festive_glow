@@ -18,7 +18,8 @@ module.exports = {
         gold: { DEFAULT: '#D6B36A', light: '#EAD9B4' },
         terracotta: '#C85A32',
         ivory: '#FFF9F0',
-        ink: { DEFAULT: '#29251F', soft: '#746C62' },
+        ink: { DEFAULT: '#2A1A1A', soft: '#746C62' },
+        maroon: { DEFAULT: '#5A1E24', deep: '#3B1117' },
         line: { DEFAULT: '#EAE2D7', dark: '#D4C8B8' },
         success: '#26734D',
         error: '#B42318',
@@ -36,7 +37,7 @@ module.exports = {
         ring: 'hsl(var(--ring))'
       },
       fontFamily: {
-        serif: ['"Playfair Display"', 'Georgia', 'serif'],
+        serif: ['"Fraunces"', 'Georgia', 'serif'],
         sans: ['"Plus Jakarta Sans"', 'ui-sans-serif', 'system-ui', 'sans-serif']
       },
       letterSpacing: { widest2: '0.22em' },

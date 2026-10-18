@@ -1,4 +1,4 @@
-import { px, us } from "./img";
+import { px, us, SHOT } from "./img";
 
 /*
  * HERO CATALOGUE — a deliberately focused range of five products.
@@ -21,6 +21,7 @@ const P = (p) => ({
 export const PRODUCTS = [
   P({
     id: "p-lantern-set",
+    model: "lantern",
     handle: "elegant-brass-diya-lanterns-set-of-4",
     name: "Elegant Brass Diya Lanterns",
     short: "Set of 4",
@@ -34,10 +35,8 @@ export const PRODUCTS = [
     badge: "Bestseller",
     highlights: ["Hand-finished cut-work", "Fits tea lights & LED candles", "Gift-boxed"],
     images: [
-      { src: px(36168883, 1400), alt: "Gold cut-work brass lantern glowing with candlelight" },
-      { src: us("1781947486860-197257ddbb7b", 1400), alt: "Brass diya lantern with a lit candle on a marble surface" },
-      { src: px(18688775, 1400), alt: "Vintage brass lantern with a flickering flame" },
-      { src: px(7209324, 1400), alt: "Lanterns styled along a table in warm light" },
+      { src: SHOT.studio_lanterns, alt: "Set of four antique brass cut-work lanterns on ivory linen, one lit" },
+      { src: SHOT.life_lanterns, alt: "Lanterns lit on a console table casting patterned light on the wall" },
     ],
     colorTags: ["Antique Brass", "Champagne Gold"],
     material: "Metal with brass-tone finish",
@@ -81,6 +80,7 @@ export const PRODUCTS = [
   }),
   P({
     id: "p-diyas-6",
+    model: "diya",
     handle: "hand-painted-terracotta-diyas-set-of-6",
     name: "Hand-Painted Terracotta Diyas",
     short: "Set of 6",
@@ -94,10 +94,8 @@ export const PRODUCTS = [
     badge: "Artisan-made",
     highlights: ["Hand-painted by artisans", "Oil-wick or LED ready", "Gift-boxed"],
     images: [
-      { src: us("1603030002297-85e206a2285a", 1400), alt: "Hand-painted diyas arranged on a terracotta surface" },
-      { src: us("1635842975205-d6c2f1c0e1fe", 1400), alt: "Two lit painted diyas glowing on a window ledge" },
-      { src: px(10182772, 1400), alt: "Traditional diyas casting a warm festive glow" },
-      { src: px(39189948, 1400), alt: "Unpainted terracotta diyas stacked at the artisan workshop" },
+      { src: SHOT.studio_diyas, alt: "Six hand-painted terracotta diyas on ivory linen, two lit" },
+      { src: SHOT.life_diyas, alt: "Lit diyas along a doorstep beside a flower rangoli at dusk" },
     ],
     colorTags: ["Terracotta", "Multicolour"],
     material: "Terracotta",
@@ -133,6 +131,7 @@ export const PRODUCTS = [
   }),
   P({
     id: "p-fairy-lights",
+    model: "lights",
     handle: "decorative-led-fairy-lights-warm-white",
     name: "Warm White LED Fairy Lights",
     short: "10 metres",
@@ -145,10 +144,8 @@ export const PRODUCTS = [
     badge: "Most gifted add-on",
     highlights: ["10 m · 100 LEDs", "Bendable copper wire", "Stays cool to touch"],
     images: [
-      { src: us("1513538416877-f11f5fb85d83", 1400), alt: "Warm fairy lights coiled and glowing against a dark background" },
-      { src: px(5836535, 1400), alt: "Warm bokeh from string lights on a textured wall" },
-      { src: us("1511461744085-90a4d1c66be3", 1400), alt: "String lights draped across a window in warm light" },
-      { src: px(1791742, 1400), alt: "Fairy lights wrapped around an open book" },
+      { src: SHOT.studio_fairylights, alt: "Warm white copper-wire fairy lights glowing in a glass jar on ivory linen" },
+      { src: SHOT.life_fairylights, alt: "Fairy lights draped around a round mirror and along a shelf" },
     ],
     colorTags: ["Warm White"],
     material: "Copper wire, LED",
@@ -184,6 +181,7 @@ export const PRODUCTS = [
   }),
   P({
     id: "p-gift-box-classic",
+    model: "giftbox",
     handle: "curated-diwali-gift-box-classic",
     name: "Curated Diwali Gift Box",
     short: "Classic",
@@ -197,10 +195,8 @@ export const PRODUCTS = [
     badge: "Ready to gift",
     highlights: ["Keepsake rigid box", "Hand-tied satin ribbon", "Free gift note"],
     images: [
-      { src: us("1592903297149-37fb25202dfa", 1400), alt: "Marbled keepsake gift box tied with a satin ribbon" },
-      { src: us("1668127494486-f27a1d2b88f9", 1400), alt: "Ivory gift box with an olive ribbon on a peach background" },
-      { src: px(28769885, 1400), alt: "Open gift box styled with sweets and festive treats" },
-      { src: us("1695568179701-462c5ea05e41", 1400), alt: "Festive gift tray styled with candles and gold decor" },
+      { src: SHOT.studio_giftbox, alt: "Maroon keepsake gift box with champagne satin ribbon beside two diyas and a candle" },
+      { src: SHOT.life_giftbox, alt: "Gift box being handed over at a marigold-decorated entrance" },
     ],
     colorTags: ["Gold", "Ivory"],
     material: "Rigid keepsake box",
@@ -235,6 +231,7 @@ export const PRODUCTS = [
   }),
   P({
     id: "p-toran",
+    model: "toran",
     handle: "festive-door-toran-marigold-bloom",
     name: "Festive Door Toran",
     short: "Marigold Bloom",
@@ -247,10 +244,8 @@ export const PRODUCTS = [
     badge: "Reusable",
     highlights: ["Fade-resistant blooms", "Packs flat", "Hooks included"],
     images: [
-      { src: px(8887264, 1400), alt: "Marigold garlands arranged over a wooden doorway" },
-      { src: px(35124359, 1400), alt: "Close-up of vibrant orange marigold garlands" },
-      { src: us("1607512566084-a20ed291d623", 1400), alt: "Hanging marigold strands in soft light" },
-      { src: us("1699764681875-dd04ce36b1c3", 1400), alt: "Orange marigold blooms in close detail" },
+      { src: SHOT.studio_toran, alt: "Marigold fabric toran laid in an arc on ivory linen" },
+      { src: SHOT.life_toran, alt: "Marigold toran hung across a wooden front door" },
     ],
     colorTags: ["Orange", "Yellow"],
     material: "Fade-resistant fabric blooms",
@@ -294,7 +289,7 @@ export const BUNDLES = [
     tagline: "Everything a first festive home needs.",
     items: ["p-diyas-6", "p-fairy-lights", "p-toran"],
     price: 1129,
-    image: us("1635842975205-d6c2f1c0e1fe", 1200),
+    image: SHOT.life_diyas,
     badge: "Most popular",
   },
   {
@@ -304,7 +299,7 @@ export const BUNDLES = [
     tagline: "For the home that does the hosting.",
     items: ["p-lantern-set", "p-diyas-6", "p-fairy-lights"],
     price: 2249,
-    image: px(36168883, 1200),
+    image: SHOT.life_lanterns,
   },
   {
     id: "b-complete-home",
@@ -313,7 +308,7 @@ export const BUNDLES = [
     tagline: "All five. Doorway to pooja corner, covered.",
     items: ["p-lantern-set", "p-diyas-6", "p-fairy-lights", "p-toran", "p-gift-box-classic"],
     price: 3799,
-    image: px(6213685, 1200),
+    image: SHOT.life_giftbox,
     badge: "Best value",
   },
 ].map((b) => {
