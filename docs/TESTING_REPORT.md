@@ -28,3 +28,8 @@ Tested in the Emergent preview environment (external preview host), 17 Oct 2025.
 - Product "brass" material and all policies are marked to-be-confirmed / draft.
 - Wishlist persisted in localStorage only.
 - 404 wildcard route exists and compiles (tested via an invalid product handle rendering its not-found state); direct /random-url returns the same component.
+
+## v2 — Five-product refocus (testing_agent iteration_1)
+- Backend pytest 4/4 against preview URL (health, newsletter code + dedupe + id, invalid email 422, contact).
+- Frontend: hero + 3D canvas present, all 10 funnel sections, showcase prices (lantern ₹1,899), compare table, 3 bundles with correct prices/savings, bundle → single cart line, cart upsell logic (₹650 remaining case), newsletter GLOW10 flow, help FAB, nav/mobile menu/footer, all 5 PDPs incl. variant price switches and disabled Set of 6, sticky mobile ATC, no horizontal overflow at 390px, collections counts + legacy fallback, search/wishlist/404/About/FAQ. 0 console errors.
+- Report: /app/test_reports/iteration_1.json

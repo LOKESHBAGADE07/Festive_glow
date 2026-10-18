@@ -1,33 +1,42 @@
-# PRD — Noor & Vaani (Indian Festive Decor & Gifting Storefront Prototype)
+# PRD — Noor & Vaani (Five-Product Festive Storefront Prototype)
 
 ## Original problem statement
-Build a premium, mobile-first Indian e-commerce storefront prototype ("Illuminate Your Diwali – Festive Decor & Gift Sale") for a long-term home decor and gifting brand. Not a static landing page: a coherent multi-page shopping experience (home, collections with working filters/sorting, product detail with variants, cart drawer + page, search, wishlist, supporting pages, 404) with a saffron/gold/ivory/charcoal design system, structured demo product data, honest prototype behaviour (no fake reviews, scarcity, payments), and a documented handoff path to a Shopify Liquid theme.
+Build a premium, mobile-first Indian e-commerce storefront prototype for a long-term home decor and gifting brand: coherent multi-page shopping experience (home, collections with filters/sorting, PDP with variants, cart drawer + page, search, wishlist, supporting pages, 404), saffron/gold/ivory/charcoal design system, honest prototype behaviour (no fake reviews/scarcity/payments), documented Shopify Liquid handoff.
 
-## User decisions (from ask_human)
-- Brand: "Noor & Vaani" (easily replaceable placeholder in src/data/site.js)
-- Ratings: shown, clearly labelled "Preview data"
-- Wishlist: yes — card hearts + wishlist page
-- Newsletter: simulated locally with real loading/success/error states (stored in demo backend)
+**v2 directive (latest):** make it more professional, product photography consistent, apply conversion strategies, and **centre the whole store on 4–5 hero products — not a variety store** — with Three.js, trending tech and best-in-class UI/UX.
+
+## User decisions
+- Brand: "Noor & Vaani" (replaceable in `src/data/site.js`)
+- Ratings shown, labelled "Preview"; wishlist yes; newsletter simulated locally (stored in demo Mongo)
+- **Hero products (confirmed):** Hand-Painted Terracotta Diyas (Set of 6) · Elegant Brass Diya Lanterns (Set of 4) · Warm White LED Fairy Lights (10 m) · Curated Diwali Gift Box · Festive Door Toran (Marigold Bloom)
+- **3D hero:** interactive 3D diya + ambient gold particle field (both), reacts to pointer and scroll
+- Conversion set: sticky ATC, bundle upsell (PDP + cart), free-shipping progress, trust badges, honest urgency (ships in 24h), 10% welcome code (demo GLOW10), delivery/returns near every buy button, WhatsApp-style help button, dedicated PDPs for all 5, product-led homepage funnel, nav = Shop / Bundles / Gifting / Our Story
 
 ## Architecture
-- Frontend: React (CRA/FARM), Tailwind tokens (index.css + tailwind.config.js), framer-motion reveals, Lenis smooth scroll, vaul drawers, sonner toasts, radix accordion/select/progress.
-- Data: src/data/products.js (14 demo products, options/variants/SKUs), site.js (brand, nav, categories, benefits, ₹999 threshold), policies.js (draft policies + FAQs).
-- State: StoreContext (cart, wishlist, drawers) persisted to localStorage.
-- Backend: FastAPI + Mongo — /api/health, /api/newsletter (POST, validated, deduped), /api/contact (POST). No auth (no credentials needed).
-- SEO: static head (title/description/OG/Twitter/Organization JSON-LD), per-route meta via Seo component, robots.txt + llms.txt, no invented canonical/domain.
+- Frontend: React 19 CRA, Tailwind tokens, framer-motion, Lenis, **three + @react-three/fiber** (drei not installable on Node 20 — helpers hand-rolled in `Hero3D.jsx`), vaul/radix/sonner.
+- Data: `src/data/products.js` — `PRODUCTS` (5, with options/variants, highlights, bestFor, pairsWith, faqs) + `BUNDLES` (3, single cart line, auto-computed savings); `site.js` — NAV, COLLECTIONS (shop-all, gifting), DELIVERY_PROMISE, WELCOME_OFFER, WHATSAPP; `policies.js` — FAQs/policies.
+- State: `StoreContext` (cart incl. bundle lines with `url`/`isBundle`, wishlist, drawers) → localStorage.
+- Backend: FastAPI + Mongo — `/api/health`, `/api/newsletter` (validated, deduped, returns `welcome_code` GLOW10 and `id`), `/api/contact`. Tests: `backend/tests/test_api.py` (4 passing).
+- Routes: `/`, `/collections/:handle` (shop-all | gifting; legacy handles fall back to all), `/bundles` (+ `/collections/bundles`), `/products/:handle`, `/cart`, `/wishlist`, `/search`, `/pages/*`, 404.
 
-## Implemented (Oct 2025)
-- Full site shell: announcement bar, sticky header, mobile menu, search overlay, footer w/ newsletter.
-- Home: kinetic masked-reveal hero w/ parallax, marquee, benefits, category cards, trending grid, gift editorial, LED spotlight (dark), inspiration, preview-labelled testimonials, newsletter panel, final CTA.
-- Collections (/collections/shop-all|lights|decor|gifts|apparel): URL-param filters (price, colour, material, stock), sorting (featured/price asc/price desc/newest), chips + reset, load more, empty state.
-- Featured PDP (Elegant Brass Diya Lanterns – Set of 4): swipeable gallery + thumbs + zoom, Finish × Set variants with availability (Set of 6 blocked), qty stepper, ATC w/ loading + drawer, wishlist, PIN delivery checker, trust row, accordions (description/features/specs/shipping/FAQ), preview reviews, related products, sticky mobile ATC.
-- Cart drawer + cart page (qty, remove, subtotal, threshold progress, checkout handoff notice), wishlist page, search page, About, Contact, FAQ, Track Order, 4 policy pages, 404.
-- Docs: /app/docs/SHOPIFY_HANDOFF.md (tokens, component inventory, Liquid template map, asset manifest, interaction spec), /app/docs/TESTING_REPORT.md.
+## Implemented
+### Oct 2025 — v1 prototype (variety catalogue, 14 products) — superseded
+### v2 — Five-product refocus (this iteration)
+- New catalogue of 5 hero products with consistent warm-graded photography (`.nv-photo`), 4 images each, variants, highlights, product FAQs.
+- Homepage funnel: Three.js hero (lazy, WebGL-guarded, mobile-positioned) → marquee → benefits → "Meet the five" editorial showcase (parallax, ATC + details per product) → compare table → 3 bundles → social proof (preview-labelled) + artisan story → gifting → FAQ → 10% offer → final CTA.
+- Bundles page + BundleCard; bundle upsell on PDP; cart drawer upsell ("Add ₹X more for free shipping" / "Complete the look").
+- PDP upgrades: kicker, highlights, delivery/returns promise row, bundle upsell, product-specific FAQs, "Pairs well with".
+- Newsletter → welcome code with copy button; backend returns `welcome_code`.
+- WhatsApp-style help FAB (falls back to contact page until a number is set).
+- Simplified nav, mobile menu & footer list the five products; About/FAQ/SEO meta rewritten around the five.
+- Tested: `/app/test_reports/iteration_1.json` — all backend + frontend flows pass, 0 console errors.
 
-## Backlog (P0)
-- Replace demo catalogue with real products (Shopify import).
-- Finalize brand name, prices, policies, shipping rules; remove all "Preview/demo" labels.
-## P1
-- Real review app, order tracking integration, email service for newsletter.
-## P2
-- Custom domain + full SEO (canonical/sitemap), analytics/consent, wishlist sync w/ accounts.
+## Backlog
+### P0 (before launch)
+- Replace stock photography with owned product shots (keep `.nv-photo` grade); confirm materials/specs/prices.
+- Confirm operational promises (24h dispatch, 3–6 days, 7-day returns) and set `WHATSAPP.number`.
+- Shopify build per `/app/docs/SHOPIFY_HANDOFF.md` §0.
+### P1
+- Real reviews app, order tracking, ESP for newsletter (code `GLOW10` as real discount), analytics + consent.
+### P2
+- Product video / 360 on PDP, gift-note field in cart, UGC gallery, custom domain + sitemap/canonical.

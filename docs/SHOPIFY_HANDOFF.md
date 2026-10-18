@@ -3,6 +3,28 @@
 Design prototype: React (FARM) storefront, mobile-first, Indian festive decor & gifting.
 Target: Shopify Liquid theme. This document maps everything built to its future Shopify home.
 
+## 0. v2 — Five-product refocus (latest)
+
+The store is now a **focused, conversion-led storefront for exactly five hero products** (no variety catalogue).
+
+| Prototype piece | Shopify equivalent |
+|---|---|
+| `src/data/products.js` → `PRODUCTS` (5) | 5 Shopify products with options/variants as defined (Finish×Set, Palette, Power, Edition, Width) |
+| `src/data/products.js` → `BUNDLES` (3, priced as one cart line) | Shopify Bundles app or a "bundle" product with fixed components; prices ₹1,129 / ₹2,249 / ₹3,799 |
+| `COLLECTIONS` (`shop-all`, `gifting`) | 2 collections: "The Five" (all), "Gifting" (tag `gift-boxed`) |
+| `components/home/HeroSection.jsx` + `Hero3D.jsx` (react-three-fiber diya + particles) | Custom section `hero-3d.liquid` loading a bundled Three.js script via `{{ 'hero-3d.js' | asset_url }}`; fall back to static hero image when WebGL is unavailable (already handled in prototype) |
+| `components/home/ProductShowcase.jsx` | Repeatable section `featured-product-editorial.liquid` ×5 with product picker, alternating layout, parallax via CSS/IntersectionObserver |
+| `components/CompareTable.jsx` | Section `product-compare.liquid` using product metafields (`best_for`, `setup_time`, `open_flame`) |
+| `components/BundleCard.jsx`, `pages/Bundles.jsx` | Template `page.bundles.liquid` + `bundle-card` snippet |
+| `components/BundleUpsell.jsx` (PDP) / `components/CartUpsell.jsx` (drawer) | Snippets `bundle-upsell.liquid`, `cart-upsell.liquid` (cart drawer shows cheapest 2 products not in cart while below free-shipping threshold) |
+| `NewsletterForm` → 10% code `GLOW10` | Shopify Email / Klaviyo signup form + Shopify discount code `GLOW10` (first order, one per customer) |
+| `components/WhatsAppButton.jsx` | Snippet `whatsapp-fab.liquid` — set `WHATSAPP.number` → theme setting |
+| `DELIVERY_PROMISE` copy (ships in 24h, 3–6 days, 7-day returns) | Theme settings strings; must match real operations before launch |
+| `.nv-photo` CSS grade | Keep in theme CSS so mixed photography reads as one shoot |
+
+Conversion mechanics implemented: product-led funnel (hero → the five → compare → bundles → social proof → gifting → FAQ → offer → CTA), sticky mobile ATC, bundle upsell on PDP and in cart, free-shipping progress, trust rows beside every buy button, honest urgency (operational promises only — no fake scarcity/timers), welcome-offer code, help FAB.
+
+
 ## 1. Design token sheet
 
 | Token | Value | Usage |
