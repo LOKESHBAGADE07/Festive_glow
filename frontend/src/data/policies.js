@@ -4,28 +4,28 @@
 
 export const FAQS = [
   {
-    q: "What are the dimensions of the lantern set?",
-    a: "Each lantern is approximately 15 cm tall and 10 cm wide (sample specification). Exact dimensions will be confirmed on the final product page before launch.",
+    q: "How quickly will my order arrive?",
+    a: "Orders dispatch within 24 hours (Mon–Sat) and typically arrive in 3–6 days across India. You'll get a tracking link by email and WhatsApp the moment it ships.",
   },
   {
-    q: "What is included in the box?",
-    a: "The set includes four lanterns. Candles are not included unless the final product data confirms them — the box contents will be listed in full on the product page.",
+    q: "What if it doesn't suit my home?",
+    a: "You have 7 days from delivery for an easy return — unused, in the original box. We arrange the pickup and refund to your original payment method. No questions asked.",
   },
   {
-    q: "How do I care for the products?",
-    a: "Most pieces need only a soft dry cloth. Textiles are labelled with wash care instructions, and candles should never be left burning unattended. Full care notes appear in each product's specifications.",
+    q: "Are the lanterns and diyas safe with a real flame?",
+    a: "Yes — both are designed for tea lights or oil wicks. Place them on a heat-safe surface and never leave a flame unattended. Around curtains or children we recommend flameless LED candles, which fit perfectly too.",
   },
   {
-    q: "How long does delivery take?",
-    a: "Sample estimate: 3–7 days across India. Final shipping timelines, partners and charges will be configured in Shopify before launch — this prototype does not promise delivery dates.",
+    q: "Can I send a product directly as a gift?",
+    a: "Absolutely. Every piece arrives gift-boxed with tissue wrap. Enter the recipient's address at checkout, add a free handwritten note, and we'll leave out the price slip.",
   },
   {
-    q: "Can I return or exchange an item?",
-    a: "The demo store displays a returns policy placeholder. The final returns window and process will be published as a confirmed policy before launch.",
+    q: "Do you offer bundle or bulk discounts?",
+    a: "Our three bundles save 15–20% versus buying separately. For corporate or wedding orders of 20+ pieces, message us on WhatsApp for a custom quote.",
   },
   {
-    q: "How do I track my order?",
-    a: "Order tracking will be powered by Shopify's order system (or a tracking app) in the live store. The prototype's Track Order page explains this integration — it cannot look up real orders.",
+    q: "How do I care for the pieces between seasons?",
+    a: "A soft dry cloth is all the lanterns and diyas need. Coil the fairy lights loosely, shake dust off the toran and store everything flat in the boxes provided.",
   },
 ];
 

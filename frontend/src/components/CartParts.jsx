@@ -15,7 +15,7 @@ export function ShippingProgress({ subtotal }) {
         ) : (
           <span data-testid="shipping-unlocked" className="font-bold text-success">You’ve unlocked free shipping on this order</span>
         )}
-        <span className="text-ink-soft"> · demo threshold {inr(FREE_SHIPPING_THRESHOLD)}</span>
+
       </p>
       <Progress data-testid="shipping-progress-bar" value={pct} className="h-1.5 bg-line" />
     </div>

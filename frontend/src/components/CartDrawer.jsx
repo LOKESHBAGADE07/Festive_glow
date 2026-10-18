@@ -4,6 +4,8 @@ import { ShoppingBag, ArrowRight } from "lucide-react";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetDescription } from "@/components/ui/sheet";
 import { useStore } from "@/context/StoreContext";
 import CartLine from "@/components/CartLine";
+import CartUpsell from "@/components/CartUpsell";
+import { DELIVERY_PROMISE } from "@/data/site";
 import { inr } from "@/lib/format";
 import { ShippingProgress, CheckoutNotice } from "@/components/CartParts";
 
@@ -40,7 +42,7 @@ export default function CartDrawer() {
                 onClick={() => setCartOpen(false)}
                 className="rounded-full bg-saffron px-6 py-3 text-sm font-bold text-white transition-colors hover:bg-saffron-dark"
               >
-                Shop the Festive Edit
+                Shop the Five
               </Link>
             </div>
           ) : (
@@ -50,13 +52,14 @@ export default function CartDrawer() {
                   <CartLine key={item.key} item={item} compact />
                 ))}
               </div>
+              <CartUpsell />
               <div className="space-y-3 border-t border-line bg-white p-5">
                 <ShippingProgress subtotal={subtotal} />
                 <div className="flex items-center justify-between">
                   <span className="text-sm text-ink-soft">Subtotal</span>
                   <span data-testid="cart-drawer-subtotal" className="font-serif text-xl font-semibold text-ink">{inr(subtotal)}</span>
                 </div>
-                <p className="text-[11px] text-ink-soft">Shipping, taxes and discounts are calculated at Shopify checkout when live.</p>
+                <p className="text-[11px] text-ink-soft">{DELIVERY_PROMISE.dispatch} · {DELIVERY_PROMISE.returns} · {DELIVERY_PROMISE.secure}</p>
                 <button
                   data-testid="cart-drawer-checkout"
                   onClick={() => { setCartOpen(false); setNoticeOpen(true); }}

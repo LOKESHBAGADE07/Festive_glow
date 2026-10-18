@@ -40,6 +40,7 @@ module.exports = {
         sans: ['"Plus Jakarta Sans"', 'ui-sans-serif', 'system-ui', 'sans-serif']
       },
       letterSpacing: { widest2: '0.22em' },
+      spacing: { 13: '3.25rem' },
       boxShadow: {
         card: '0 1px 2px rgba(41,37,31,0.04), 0 8px 24px -12px rgba(41,37,31,0.12)',
         lift: '0 2px 4px rgba(41,37,31,0.05), 0 20px 40px -16px rgba(41,37,31,0.18)'

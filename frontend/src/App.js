@@ -10,8 +10,10 @@ import MobileMenu from "@/components/MobileMenu";
 import SearchOverlay from "@/components/SearchOverlay";
 import CartDrawer from "@/components/CartDrawer";
 import Footer from "@/components/Footer";
+import WhatsAppButton from "@/components/WhatsAppButton";
 import Home from "@/pages/Home";
 import Collection from "@/pages/Collection";
+import Bundles from "@/pages/Bundles";
 import Product from "@/pages/Product";
 import CartPage from "@/pages/CartPage";
 import Wishlist from "@/pages/Wishlist";
@@ -63,6 +65,8 @@ function Shell() {
       <main id="main">
         <Routes>
           <Route index element={<Home />} />
+          <Route path="/bundles" element={<Bundles />} />
+          <Route path="/collections/bundles" element={<Bundles />} />
           <Route path="/collections/:handle" element={<Collection />} />
           <Route path="/products/:handle" element={<Product />} />
           <Route path="/cart" element={<CartPage />} />
@@ -78,6 +82,7 @@ function Shell() {
       </main>
       <Footer />
       <CartDrawer />
+      <WhatsAppButton />
       <MobileMenu />
       <SearchOverlay />
       <Toaster position="bottom-right" richColors closeButton />

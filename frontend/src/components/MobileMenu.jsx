@@ -2,7 +2,8 @@ import { Link } from "react-router-dom";
 import { X, Heart, ShoppingBag } from "lucide-react";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetDescription } from "@/components/ui/sheet";
 import { useStore } from "@/context/StoreContext";
-import { NAV, CATEGORIES, SOCIALS } from "@/data/site";
+import { NAV, SOCIALS } from "@/data/site";
+import { PRODUCTS } from "@/data/products";
 import Logo from "@/components/Logo";
 
 export default function MobileMenu() {
@@ -40,17 +41,18 @@ export default function MobileMenu() {
                 </li>
               ))}
             </ul>
-            <p className="nv-eyebrow mt-6 mb-2 px-3 text-ink-soft">Collections</p>
-            <ul className="grid grid-cols-2 gap-1">
-              {CATEGORIES.map((c) => (
-                <li key={c.handle}>
+            <p className="nv-eyebrow mt-6 mb-2 px-3 text-ink-soft">The Five</p>
+            <ul className="space-y-0.5">
+              {PRODUCTS.map((p) => (
+                <li key={p.id}>
                   <Link
-                    to={`/collections/${c.handle}`}
-                    data-testid={`mobile-menu-collection-${c.handle}`}
+                    to={`/products/${p.handle}`}
+                    data-testid={`mobile-menu-product-${p.handle}`}
                     onClick={close}
-                    className="block rounded-lg px-3 py-2.5 text-sm text-ink-soft hover:bg-secondary"
+                    className="flex items-center gap-3 rounded-lg px-3 py-2 text-sm text-ink-soft hover:bg-secondary"
                   >
-                    {c.name}
+                    <img src={p.images[0].src} alt="" className="nv-photo h-8 w-8 rounded-md object-cover" />
+                    <span className="min-w-0 truncate">{p.name}</span>
                   </Link>
                 </li>
               ))}

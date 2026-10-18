@@ -9,8 +9,8 @@ import Reveal from "@/components/Reveal";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetDescription } from "@/components/ui/sheet";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Checkbox } from "@/components/ui/checkbox";
-import { productsByCategory, PRODUCTS } from "@/data/products";
-import { CATEGORY_MAP } from "@/data/site";
+import { productsByCollection } from "@/data/products";
+import { COLLECTION_MAP, DELIVERY_PROMISE } from "@/data/site";
 
 const PRICE_BUCKETS = [
   { id: "under-500", label: "Under ₹500", test: (p) => p.price < 500 },
@@ -104,8 +104,8 @@ export default function Collection() {
   const [searchParams, setSearchParams] = useSearchParams();
   const [filterOpen, setFilterOpen] = useState(false);
   const [visible, setVisible] = useState(PAGE_SIZE);
-  const cat = CATEGORY_MAP[handle] || CATEGORY_MAP["shop-all"];
-  const base = useMemo(() => productsByCategory(handle), [handle]);
+  const cat = COLLECTION_MAP[handle] || COLLECTION_MAP["shop-all"];
+  const base = useMemo(() => productsByCollection(COLLECTION_MAP[handle] ? handle : "shop-all"), [handle]);
 
   const activeCount =
     (searchParams.get("price")?.split(",").filter(Boolean).length || 0) +
@@ -177,6 +177,11 @@ export default function Collection() {
         <header className="mt-6 mb-8 max-w-2xl">
           <h1 className="font-serif text-3xl font-semibold tracking-tight text-ink sm:text-4xl lg:text-5xl">{cat.name}</h1>
           <p className="mt-3 text-sm leading-relaxed text-ink-soft sm:text-base">{cat.description}</p>
+          <p className="mt-4 flex flex-wrap gap-x-4 gap-y-1 text-xs text-ink-soft">
+            <span>{DELIVERY_PROMISE.dispatch}</span><span aria-hidden="true">·</span>
+            <span>Free shipping over ₹999</span><span aria-hidden="true">·</span>
+            <span>{DELIVERY_PROMISE.returns}</span>
+          </p>
         </header>
 
         <div className="grid gap-8 lg:grid-cols-[240px_1fr] lg:gap-10">
@@ -240,7 +245,7 @@ export default function Collection() {
               />
             ) : (
               <>
-                <div data-testid="collection-grid" className="grid grid-cols-2 gap-x-3 gap-y-8 sm:gap-x-6 lg:grid-cols-3 xl:grid-cols-4">
+                <div data-testid="collection-grid" className="grid grid-cols-2 gap-x-3 gap-y-8 sm:gap-x-6 lg:grid-cols-3">
                   {shown.map((p, i) => (
                     <Reveal key={p.id} delay={(i % 4) * 0.05} className="h-full">
                       <ProductCard product={p} />

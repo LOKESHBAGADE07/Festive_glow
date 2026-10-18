@@ -20,7 +20,7 @@ export default function ProductCard({ product, dark = false }) {
               src={product.images[0].src}
               alt={product.images[0].alt}
               loading="lazy"
-              className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.06]"
+              className="nv-photo h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.06]"
             />
           </div>
         </Link>
@@ -60,7 +60,7 @@ export default function ProductCard({ product, dark = false }) {
       <div className="flex flex-1 flex-col gap-1 px-0.5 pt-3">
         <div className="flex items-center justify-between gap-2">
           <span className={`text-[10px] font-bold uppercase tracking-widest ${dark ? "text-gold" : "text-saffron-dark"}`}>
-            {product.category}
+            {product.kicker || product.category}
           </span>
         </div>
         <Link to={`/products/${product.handle}`} className="text-sm font-semibold leading-snug text-ink hover:text-saffron-dark">

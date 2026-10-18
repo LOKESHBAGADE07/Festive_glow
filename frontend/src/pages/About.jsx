@@ -24,21 +24,21 @@ export default function About() {
           <Reveal>
             <p className="nv-eyebrow mb-2.5 text-saffron-dark">Our Story</p>
             <h1 className="font-serif text-4xl font-semibold tracking-tight text-ink sm:text-5xl">
-              Beautiful things for celebrating at home
+              Five pieces, made slowly, chosen carefully
             </h1>
             <p className="mt-5 text-[15px] leading-relaxed text-ink-soft sm:text-base">
               Noor &amp; Vaani began as a simple observation: Indian homes celebrate more often than any store gives them credit for. Diwali, housewarmings, weddings, guests who stay a little longer — each deserves a home that feels warm without effort.
             </p>
             <p className="mt-4 text-[15px] leading-relaxed text-ink-soft sm:text-base">
-              We start with the festival of lights — diyas, lanterns, rangoli and gifts chosen with a decorator’s eye — and grow steadily into decor and accessories for the whole year. Nothing loud, nothing cluttered. Pieces you’ll reach for every celebration.
+              So we did the opposite of a variety store. We make five things — artisan diyas, cut-work lanterns, warm fairy lights, a marigold toran and one perfect gift box — and we make them well. Each is chosen to layer with the others, so a home comes together without feeling staged.
             </p>
             <p className="mt-4 text-[15px] leading-relaxed text-ink-soft sm:text-base">
-              This storefront is currently a design prototype: the catalogue, reviews and policies shown are clearly labelled sample data while the real business details are finalised.
+              We work with small artisan workshops, pay fairly for slow work and ship every order gift-boxed within 24 hours. The range will grow — but only when the sixth piece earns its place.
             </p>
           </Reveal>
           <Reveal delay={0.1}>
             <div className="overflow-hidden rounded-2xl border border-line shadow-lift">
-              <img src={px(7037689, 1200)} alt="An artisan block printing fabric by hand in a workshop" className="aspect-[4/3] w-full object-cover" loading="lazy" />
+              <img src={px(39189948, 1200)} alt="Terracotta diyas stacked at the artisan workshop" className="nv-photo aspect-[4/3] w-full object-cover" loading="lazy" />
             </div>
           </Reveal>
         </div>
@@ -58,10 +58,10 @@ export default function About() {
         <Reveal className="mt-16 text-center lg:mt-24">
           <p className="nv-eyebrow mb-2.5 text-saffron-dark">The Festive Edit</p>
           <h2 className="mx-auto max-w-xl font-serif text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
-            Start with the lights
+            Meet the five
           </h2>
           <Link data-testid="about-cta" to="/collections/shop-all" className="mt-7 inline-flex rounded-full bg-saffron px-8 py-4 text-sm font-bold uppercase tracking-widest text-white transition-colors hover:bg-saffron-dark">
-            Shop the Collection
+            Shop the Five
           </Link>
         </Reveal>
       </div>

@@ -2,81 +2,73 @@ import { px, us } from "./img";
 
 export const BRAND = {
   name: "Noor & Vaani",
-  tagline: "Curated decor & thoughtful gifts",
-  // Placeholder — replace with the real registered business details before launch.
+  tagline: "Five pieces. One glowing home.",
   legal: "Noor & Vaani — design prototype, not a live store",
 };
 
-// Announcement bar — message, background and visibility are configurable here.
 export const ANNOUNCEMENT = {
   visible: true,
-  message: "Celebrate the season with thoughtfully curated festive decor.",
+  message: "Festive Edit live · Free shipping over ₹999 · Orders dispatch within 24 hours",
 };
 
-// Demo shipping threshold. Change here and every progress bar/message updates.
 export const FREE_SHIPPING_THRESHOLD = 999;
 
+/* Honest urgency copy — operational facts, not fake scarcity. */
+export const DELIVERY_PROMISE = {
+  dispatch: "Dispatches within 24 hours",
+  delivery: "Delivered in 3–6 days across India",
+  returns: "7-day easy returns",
+  secure: "Secure checkout · UPI, cards, net banking",
+};
+
+/* Welcome offer — demo code issued by the newsletter endpoint. */
+export const WELCOME_OFFER = {
+  percent: 10,
+  code: "GLOW10",
+  headline: "Get 10% off your first order",
+};
+
+/* WhatsApp help button — set a real number (country code, digits only) before launch. */
+export const WHATSAPP = {
+  number: "",
+  message: "Hi Noor & Vaani — I have a question about your festive range.",
+};
+
 export const NAV = [
-  { label: "Shop All", to: "/collections/shop-all" },
-  { label: "Lights", to: "/collections/lights" },
-  { label: "Decor", to: "/collections/decor" },
-  { label: "Gifts", to: "/collections/gifts" },
-  { label: "Apparel", to: "/collections/apparel" },
+  { label: "Shop", to: "/collections/shop-all" },
+  { label: "Bundles", to: "/bundles" },
+  { label: "Gifting", to: "/collections/gifting" },
   { label: "Our Story", to: "/pages/about" },
 ];
 
-export const CATEGORIES = [
+export const COLLECTIONS = [
   {
-    handle: "lights",
-    name: "Lights",
-    short: "Fairy lights, lanterns & diyas",
-    description:
-      "Warm fairy lights, brass lanterns and hand-painted diyas to give every corner a festive glow.",
-    image: px(7209324, 900),
+    handle: "shop-all",
+    name: "The Five",
+    description: "Our entire range — five pieces chosen to layer together, from the doorway to the pooja corner.",
+    image: px(6213685, 900),
   },
   {
-    handle: "decor",
-    name: "Decor",
-    short: "Torans, rangoli & candles",
-    description:
-      "Door torans, rangoli kits, candles and objects that style your home for the season — and beyond it.",
-    image: px(8818759, 900),
-  },
-  {
-    handle: "gifts",
-    name: "Gifts & Hampers",
-    short: "Curated boxes for every occasion",
-    description:
-      "Curated gift boxes and hampers for Diwali, housewarmings, weddings and every celebration in between.",
-    image: us("1695568179701-462c5ea05e41", 900),
-  },
-  {
-    handle: "apparel",
-    name: "Apparel & Accessories",
-    short: "Cushions, runners & textiles",
-    description:
-      "Block-printed cushions, table runners and soft furnishings that bring festive warmth home.",
-    image: us("1575277340591-849c346c4542", 900),
+    handle: "gifting",
+    name: "Gifting",
+    description: "The pieces that arrive gift-boxed and ready to hand over — no wrapping required.",
+    image: us("1592903297149-37fb25202dfa", 900),
   },
 ];
 
-export const CATEGORY_MAP = Object.fromEntries([
-  ...CATEGORIES.map((c) => [c.handle, c]),
-  ["shop-all", { handle: "shop-all", name: "Shop All", description: "Every product in the demo catalogue — lights, decor, gifts and textiles." }],
-]);
+export const COLLECTION_MAP = Object.fromEntries(COLLECTIONS.map((c) => [c.handle, c]));
 
-// Proposed store policies (demo values — configure before launch).
 export const BENEFITS = [
-  { icon: "Truck", title: "Free shipping over ₹999", note: "Demo threshold — configurable" },
-  { icon: "RotateCcw", title: "Easy returns", note: "As per the returns policy" },
-  { icon: "ShieldCheck", title: "Secure checkout", note: "UPI, cards & net banking at checkout" },
-  { icon: "MessagesSquare", title: "Customer support", note: "Support hours set at launch" },
+  { icon: "Truck", title: "Free shipping over ₹999", note: "Dispatched within 24 hours" },
+  { icon: "RotateCcw", title: "7-day easy returns", note: "No questions asked" },
+  { icon: "ShieldCheck", title: "Secure checkout", note: "UPI, cards & net banking" },
+  { icon: "MessagesSquare", title: "Real human support", note: "WhatsApp & email, 10am–7pm" },
 ];
 
 export const TRUST_ROW = [
-  { title: "Free Shipping", note: "on orders over ₹999 (demo)" },
-  { title: "Returns", note: "as per our returns policy" },
-  { title: "Secure Checkout", note: "via Shopify when live" },
+  { title: "Ships in 24h", note: "free over ₹999" },
+  { title: "7-day returns", note: "easy & hassle-free" },
+  { title: "Secure checkout", note: "UPI · cards · net banking" },
 ];
 
 export const SOCIALS = [

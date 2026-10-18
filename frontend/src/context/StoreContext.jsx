@@ -45,6 +45,8 @@ export function StoreProvider({ children }) {
           key,
           productId: product.id,
           handle: product.handle,
+          url: product.isBundle ? "/bundles" : `/products/${product.handle}`,
+          isBundle: !!product.isBundle,
           title: product.name,
           variantId: variant.id,
           variantLabel: variant.label,

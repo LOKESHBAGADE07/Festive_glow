@@ -111,6 +111,57 @@ img { user-select: none; }
 input[type="number"]::-webkit-outer-spin-button,
 input[type="number"]::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
 
+/* Unified photo treatment — every product image gets the same warm, slightly
+   lifted grade so mixed-source photography reads as one shoot. */
+.nv-photo {
+  filter: saturate(1.05) contrast(1.04) brightness(1.02) sepia(0.12);
+}
+.nv-photo-frame { position: relative; isolation: isolate; }
+.nv-photo-frame::after {
+  content: "";
+  position: absolute; inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(120% 90% at 50% 100%, rgba(41,37,31,0.28), transparent 60%),
+    linear-gradient(180deg, rgba(232,145,36,0.06), transparent 40%);
+  mix-blend-mode: multiply;
+}
+
+/* Film grain overlay for dark sections */
+.nv-grain::before {
+  content: "";
+  position: absolute; inset: 0;
+  pointer-events: none;
+  opacity: 0.08;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  mix-blend-mode: overlay;
+}
+
+/* Hero radial glow behind the 3D diya */
+.nv-hero-glow {
+  background:
+    radial-gradient(60% 55% at 68% 55%, rgba(232,145,36,0.32), transparent 70%),
+    radial-gradient(40% 40% at 30% 20%, rgba(214,179,106,0.10), transparent 70%),
+    #171208;
+}
+
+/* Thin, themed horizontal scrollbar for compare tables */
+.nv-scroll { scrollbar-width: thin; scrollbar-color: var(--nv-line-dark) transparent; }
+.nv-scroll::-webkit-scrollbar { height: 6px; }
+.nv-scroll::-webkit-scrollbar-thumb { background: var(--nv-line-dark); border-radius: 999px; }
+
+/* Numbered section index */
+.nv-index { font-variant-numeric: tabular-nums; }
+
+@keyframes nv-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+.nv-float { animation: nv-float 4s ease-in-out infinite; }
+
+@keyframes nv-pulse-ring { 0% { transform: scale(0.8); opacity: 0.7; } 100% { transform: scale(1.8); opacity: 0; } }
+.nv-pulse::after {
+  content: ""; position: absolute; inset: 0; border-radius: inherit;
+  border: 1px solid currentColor; animation: nv-pulse-ring 2.2s ease-out infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .nv-marquee-track { animation: none; }

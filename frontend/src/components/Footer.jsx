@@ -2,7 +2,8 @@ import { Link } from "react-router-dom";
 import { Instagram, Facebook, Youtube, MapPin } from "lucide-react";
 import Logo from "@/components/Logo";
 import NewsletterForm from "@/components/NewsletterForm";
-import { CATEGORIES, PAYMENT_NOTE, SOCIALS } from "@/data/site";
+import { PAYMENT_NOTE, SOCIALS } from "@/data/site";
+import { PRODUCTS } from "@/data/products";
 
 const HELP_LINKS = [
   { label: "About Us", to: "/pages/about" },
@@ -25,10 +26,10 @@ export default function Footer() {
     <footer data-testid="site-footer" className="border-t border-line bg-white">
       <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8 lg:py-16">
         <div className="grid gap-10 lg:grid-cols-12">
-          <div className="lg:col-span-4">
+          <div className="lg:col-span-12 xl:col-span-4">
             <Logo />
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-ink-soft">
-              Beautifully curated home decor and meaningful gifts — festive Indian warmth, modern minimalism.
+              Five festive essentials, made by artisans and chosen with care. Dispatched in 24 hours, gift-boxed always.
             </p>
             <ul className="mt-5 flex gap-2">
               {SOCIALS.map((s) => {
@@ -52,14 +53,16 @@ export default function Footer() {
             </p>
           </div>
 
-          <nav aria-label="Shop" className="lg:col-span-2">
+          <nav aria-label="Shop" className="lg:col-span-3">
             <p className="nv-eyebrow mb-4 text-ink">Shop</p>
             <ul className="space-y-2.5">
-              <li><Link data-testid="footer-shop-all" to="/collections/shop-all" className="text-sm text-ink-soft hover:text-saffron-dark">Shop All</Link></li>
-              {CATEGORIES.map((c) => (
-                <li key={c.handle}>
-                  <Link data-testid={`footer-collection-${c.handle}`} to={`/collections/${c.handle}`} className="text-sm text-ink-soft hover:text-saffron-dark">
-                    {c.name}
+              <li><Link data-testid="footer-shop-all" to="/collections/shop-all" className="text-sm text-ink-soft hover:text-saffron-dark">The Five</Link></li>
+              <li><Link data-testid="footer-bundles" to="/bundles" className="text-sm text-ink-soft hover:text-saffron-dark">Bundles</Link></li>
+              <li><Link data-testid="footer-collection-gifting" to="/collections/gifting" className="text-sm text-ink-soft hover:text-saffron-dark">Gifting</Link></li>
+              {PRODUCTS.map((p) => (
+                <li key={p.id}>
+                  <Link data-testid={`footer-product-${p.handle}`} to={`/products/${p.handle}`} className="text-sm text-ink-soft hover:text-saffron-dark">
+                    {p.name}
                   </Link>
                 </li>
               ))}
@@ -92,8 +95,8 @@ export default function Footer() {
             </ul>
           </nav>
 
-          <div className="lg:col-span-2">
-            <p className="nv-eyebrow mb-4 text-ink">Stay in touch</p>
+          <div className="lg:col-span-3">
+            <p className="nv-eyebrow mb-4 text-ink">Get 10% off your first order</p>
             <NewsletterForm compact source="footer" />
           </div>
         </div>

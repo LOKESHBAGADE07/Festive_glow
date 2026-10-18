@@ -44,9 +44,13 @@ class BaseDocument(BaseModel):
         return cls(**doc)
 
 
+WELCOME_CODE = "GLOW10"
+
+
 class Subscriber(BaseDocument):
     email: str
     source: str = "footer"
+    welcome_code: str = WELCOME_CODE
     created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
 
 
@@ -83,7 +87,7 @@ async def health():
     return {"status": "ok"}
 
 
-@api_router.post("/newsletter", response_model=Subscriber)
+@api_router.post("/newsletter", response_model=Subscriber, response_model_by_alias=False)
 async def subscribe(payload: SubscriberCreate):
     email = payload.email.strip().lower()
     if not EMAIL_RE.match(email):
@@ -92,11 +96,12 @@ async def subscribe(payload: SubscriberCreate):
     if existing:
         return Subscriber.from_mongo(existing)
     obj = Subscriber(email=email, source=payload.source)
-    await db.subscribers.insert_one(obj.to_mongo())
+    result = await db.subscribers.insert_one(obj.to_mongo())
+    obj.id = str(result.inserted_id)
     return obj
 
 
-@api_router.post("/contact", response_model=ContactMessage)
+@api_router.post("/contact", response_model=ContactMessage, response_model_by_alias=False)
 async def contact(payload: ContactCreate):
     name = payload.name.strip()
     email = payload.email.strip().lower()
@@ -104,7 +109,8 @@ async def contact(payload: ContactCreate):
     if not name or not EMAIL_RE.match(email) or not message:
         raise HTTPException(status_code=422, detail="Please fill in a valid name, email and message.")
     obj = ContactMessage(name=name, email=email, subject=payload.subject.strip(), message=message)
-    await db.contact_messages.insert_one(obj.to_mongo())
+    result = await db.contact_messages.insert_one(obj.to_mongo())
+    obj.id = str(result.inserted_id)
     return obj
 
 

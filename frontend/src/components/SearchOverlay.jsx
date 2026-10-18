@@ -20,7 +20,7 @@ export default function SearchOverlay() {
   const query = q.trim().toLowerCase();
   const results = query
     ? PRODUCTS.filter((p) =>
-        [p.name, p.category, ...(p.tags || []), p.material].join(" ").toLowerCase().includes(query)
+        [p.name, p.category, p.kicker, p.short, ...(p.tags || []), p.material].join(" ").toLowerCase().includes(query)
       ).slice(0, 6)
     : [];
 

@@ -12,9 +12,10 @@ import EmptyState from "@/components/EmptyState";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { useStore } from "@/context/StoreContext";
-import { findProduct, resolveVariant, isOptionAvailable, relatedProducts, PRODUCTS } from "@/data/products";
+import { findProduct, resolveVariant, isOptionAvailable, relatedProducts, bundlesFor, defaultVariant } from "@/data/products";
 import { FAQS, POLICIES } from "@/data/policies";
-import { TRUST_ROW } from "@/data/site";
+import { TRUST_ROW, DELIVERY_PROMISE } from "@/data/site";
+import BundleUpsell from "@/components/BundleUpsell";
 import { inr, isValidPin } from "@/lib/format";
 
 const SHIPPING_POLICY = POLICIES["shipping-policy"];
@@ -44,7 +45,7 @@ function Gallery({ product }) {
         >
           {product.images.map((img, i) => (
             <div key={i} className="relative aspect-[4/5] w-full shrink-0 sm:aspect-square lg:aspect-[4/5]">
-              <img src={img.src} alt={img.alt} className="h-full w-full object-cover" draggable="false" />
+              <img src={img.src} alt={img.alt} className="nv-photo h-full w-full object-cover" draggable="false" />
               <button
                 data-testid={`gallery-zoom-${i}`}
                 aria-label={`Enlarge image ${i + 1}`}
@@ -179,7 +180,7 @@ function PinChecker() {
       )}
       {state === "ok" && (
         <p data-testid="pincode-success" className="mt-2 text-xs leading-relaxed text-ink-soft">
-          <span className="font-bold text-success">Deliverable to {pin}</span> — sample estimate: 3–7 days. Final timelines will be configured in Shopify before launch.
+          <span className="font-bold text-success">Deliverable to {pin}</span> — dispatches within 24 hours, estimated delivery in 3–6 days. Free shipping over ₹999.
         </p>
       )}
     </div>
@@ -205,7 +206,7 @@ function ReviewsPreview({ product }) {
         </div>
         <div className="h-12 w-px bg-line" aria-hidden="true" />
         <p className="max-w-md text-sm text-ink-soft">
-          Based on <span className="font-bold text-ink">{product.reviewCount} sample reviews</span>. This store hasn’t launched yet — real reviews will appear here once a review app is connected in Shopify.
+          Based on <span className="font-bold text-ink">{product.reviewCount} sample reviews</span>. Real customer reviews will appear here once the store launches.
         </p>
       </div>
       <div className="grid gap-4 md:grid-cols-3">
@@ -237,7 +238,7 @@ export default function Product() {
   const { addToCart, toggleWishlist, inWishlist } = useStore();
   const [selection, setSelection] = useState(() => {
     if (!product || !product.options.length) return [];
-    const first = product.variants.find((v) => v.available);
+    const first = defaultVariant(product);
     return first ? [...first.options] : product.options.map((o) => o.values[0].label);
   });
   const [qty, setQty] = useState(1);
@@ -283,6 +284,7 @@ export default function Product() {
   const trustIcons = [Truck, RotateCcw, ShieldCheck];
   const specs = Object.entries(product.specs || {});
   const related = relatedProducts(product, 4);
+  const bundles = bundlesFor(product);
 
   return (
     <>
@@ -291,7 +293,7 @@ export default function Product() {
         description={product.benefit}
       />
       <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8 lg:py-10">
-        <Breadcrumbs trail={[{ label: product.category, to: `/collections/${product.category}` }, { label: product.name }]} />
+        <Breadcrumbs trail={[{ label: "Shop", to: "/collections/shop-all" }, { label: product.name }]} />
 
         <div className="mt-6 grid gap-10 lg:grid-cols-2 lg:gap-14">
           <Gallery product={product} />
@@ -301,10 +303,11 @@ export default function Product() {
               {product.badge && (
                 <span className="rounded-full bg-ink px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-ivory">{product.badge}</span>
               )}
-              <span className="text-[11px] font-semibold uppercase tracking-widest text-ink-soft">SKU {variant.sku}</span>
+              <span className="text-[11px] font-semibold uppercase tracking-widest text-saffron-dark">{product.kicker}</span>
             </div>
             <h1 className="mt-3 font-serif text-3xl font-semibold leading-tight tracking-tight text-ink sm:text-4xl lg:text-[2.75rem]">
               {product.name}
+              {product.short && <span className="block text-xl font-normal italic text-ink-soft sm:text-2xl">{product.short}</span>}
             </h1>
             <div className="mt-3">
               <RatingPreview rating={product.rating} count={product.reviewCount} />
@@ -321,9 +324,16 @@ export default function Product() {
                 </>
               )}
             </div>
-            <p className="mt-1 text-[11px] text-ink-soft">Demo price — final pricing set in Shopify before launch.</p>
+            <p className="mt-1 text-[11px] text-ink-soft">Inclusive of all taxes · {DELIVERY_PROMISE.dispatch}</p>
 
             <p className="mt-4 text-[15px] leading-relaxed text-ink-soft">{product.benefit}</p>
+            <ul className="mt-4 flex flex-wrap gap-2" data-testid="product-highlights">
+              {product.highlights.map((h) => (
+                <li key={h} className="inline-flex items-center gap-1.5 rounded-full border border-line bg-white px-3 py-1.5 text-xs font-semibold text-ink">
+                  <BadgeCheck size={12} className="text-success" aria-hidden="true" /> {h}
+                </li>
+              ))}
+            </ul>
 
             <div className="mt-7">
               <VariantPicker product={product} selection={selection} setSelection={setSelection} variant={variant} />
@@ -355,6 +365,14 @@ export default function Product() {
                 <Heart size={18} fill={saved ? "currentColor" : "none"} />
               </button>
             </div>
+
+            <p data-testid="buy-box-promise" className="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-[11px] text-ink-soft">
+              <span className="inline-flex items-center gap-1.5"><Truck size={12} className="text-saffron-dark" /> {DELIVERY_PROMISE.delivery}</span>
+              <span className="inline-flex items-center gap-1.5"><RotateCcw size={12} className="text-saffron-dark" /> {DELIVERY_PROMISE.returns}</span>
+              <span className="inline-flex items-center gap-1.5"><ShieldCheck size={12} className="text-saffron-dark" /> Gift-boxed, free note</span>
+            </p>
+
+            <BundleUpsell bundles={bundles} product={product} />
 
             <div className="mt-6">
               <PinChecker />
@@ -425,7 +443,7 @@ export default function Product() {
               <AccordionItem value="faq" className="border-line">
                 <AccordionTrigger data-testid="accordion-faq" className="text-left font-serif text-lg font-semibold text-ink hover:no-underline hover:text-saffron-dark">Frequently Asked Questions</AccordionTrigger>
                 <AccordionContent data-testid="accordion-faq-content" className="pl-1">
-                  <FAQAccordion items={FAQS} testId="product-faq" />
+                  <FAQAccordion items={[...(product.faqs || []), ...FAQS.slice(0, 3)]} testId="product-faq" />
                 </AccordionContent>
               </AccordionItem>
             </Accordion>
@@ -439,8 +457,8 @@ export default function Product() {
             <p className="mt-4 text-sm leading-relaxed text-ink-soft">
               Every piece in the festive edit is chosen to layer — lights beside candles, textiles beside brass — so your home comes together without feeling staged.
             </p>
-            <Link data-testid="pdp-shop-collection" to={`/collections/${product.category}`} className="mt-6 inline-flex items-center gap-2 text-sm font-bold text-saffron-dark underline underline-offset-4">
-              Continue to the {product.category} collection
+            <Link data-testid="pdp-shop-collection" to="/collections/shop-all" className="mt-6 inline-flex items-center gap-2 text-sm font-bold text-saffron-dark underline underline-offset-4">
+              See all five pieces
             </Link>
           </div>
         </div>
@@ -450,8 +468,8 @@ export default function Product() {
         <div className="mt-14">
           <div className="mb-8 flex items-end justify-between gap-4">
             <div>
-              <p className="nv-eyebrow mb-2 text-saffron-dark">You may also like</p>
-              <h2 className="font-serif text-2xl font-semibold text-ink sm:text-3xl">Related Products</h2>
+              <p className="nv-eyebrow mb-2 text-saffron-dark">Pairs well with</p>
+              <h2 className="font-serif text-2xl font-semibold text-ink sm:text-3xl">Complete the look</h2>
             </div>
           </div>
           <div className="grid grid-cols-2 gap-x-3 gap-y-8 sm:gap-x-6 lg:grid-cols-4">

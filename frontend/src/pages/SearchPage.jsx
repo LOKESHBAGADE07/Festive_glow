@@ -15,7 +15,7 @@ export default function SearchPage() {
 
   const results = query
     ? PRODUCTS.filter((p) =>
-        [p.name, p.category, ...(p.tags || []), p.material].join(" ").toLowerCase().includes(query)
+        [p.name, p.category, p.kicker, p.short, ...(p.tags || []), p.material].join(" ").toLowerCase().includes(query)
       )
     : [];
 
